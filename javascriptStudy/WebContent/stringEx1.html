@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>문자열 함수 예제</title>
+</head>
+<body>
+<script type="text/javascript">
+	a= new String("Client-Side JavaScript Guide");
+	b = 1.3;
+	b = new Date();			//자료형이 어떤형인가 예측하면서 코딩해야한다.
+	document.write("문자열 a :" + a + ", 문자열 b :" + b + "<br>");
+	document.write("a.charAt(5) :" + a.charAt(5) + "<br>");
+	document.write("a.indexOf('S') :" + a.indexOf('S') + "<br>");
+	document.write("a.lastIndexOf('S') :" + a.lastIndexOf('S') + "<br>");
+	document.write("a.slice(17) :" + a.slice(17) + "<br>");
+	//slice : 16인덱스 기분으로 뒷부분을 부분문자열로 리턴
+	document.write("a.substr(17) :" + a.substr(17) + "<br>");
+	document.write("a.substring(17) :" + a.substring(17) + "<br>");
+	document.write("a.substr(1,5) :" + a.substr(1,5) + "<br>");
+	//substr : 1번 인덱스부터 5개를 부분문자열로 리턴
+	document.write("a.substring(1,5) :" + a.substring(1,5) + "<br>");
+	//substring : 1번 인덱스부터 5번인덱스 앞까지 부분문자열로 리턴 부분문자열로 리턴
+	document.wirte("a.length" : a.length + "<br>");
+</script>
+</body>
+</html>

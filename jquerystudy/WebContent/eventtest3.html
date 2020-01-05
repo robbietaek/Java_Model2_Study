@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+.header{
+	background : green;
+	color : yellow;
+
+}
+.reverse{
+	background : pink;
+	color : yellow;
+}
+
+.hover{
+	background : purple;
+	color : pink;
+}
+
+table,th,td{
+	border : 1px solid black;
+	border-collapse: collapse;
+}
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		
+		
+		$("tr").hover(function(){		
+/*
+
+			if($(this).parent().children().index(this) != 0){
+					$(this).addClass("reverse");
+			}
+			
+			$(this) : 선택된 tr 태그
+			$(this).parent(tbody,thead) : table 태그. 선택된 tr 태그의 부모태그
+			$(this).parent().children() : table 태그의 하위 태그 들
+			$(this).paremt().children().index(this): table 태그의 하위 태그 들 중 this 의 인덱스 값리턴
+			$(this).paremt().children().index(this) != 0 : this 가 table 의 첫번째 tr 태그가 아닌 경우
+*/										
+												
+		if(!$(this).is(".header")){//is() 함수 : 조건 값을 리턴
+									   //$(this).is(".header"):이벤트 발생된 tr태그의 class 속성이 header?
+			$(this).addClass("reverse");
+		}
+		},
+		function(){
+			$(this).removeClass("reverse");
+		})
+	
+		
+		
+		$("th").hover(function(){
+			//tdlen = 1개의 tr 태그의 하위 th 태그의 객수 == td 갯수
+			var tdlen = $(this).parent().children().length;
+			//this의 index +1 
+			select = $(this).index()+1;
+			//$("th:nth-chile(4n+1)")
+			$("td:nth-child("+tdlen+"n+"+select+")").addClass("hover");
+		},
+		function(){
+			var tdlen = $(this).parent().children().length;
+			select = $(this).index()+1;
+			$("td:nth-of-type("+tdlen+"n+"+select+")").removeClass("hover");
+		})	
+	})
+	
+	
+</script>
+</head>
+<body>
+<table>
+<tr class = "header"><th>이름</th><th>혈액형</th><th>지역</th><th>성별</th></tr>
+<tr><td>강민</td><td>AB형</td><td>서울</td><td>남자</td></tr>
+<tr><td>강민1</td><td>A형</td><td>서서울</td><td>여자</td></tr>
+<tr><td>강민2</td><td>B형</td><td>남서울</td><td>남자</td></tr>
+<tr><td>강민3</td><td>C형</td><td>북서울</td><td>여자</td></tr>
+<tr><td>강민4</td><td>D형</td><td>동서울</td><td>남자</td></tr>
+<tr><td>강민5</td><td>E형</td><td>평양</td><td>여자</td></tr>
+<tr><td>강민6</td><td>F형</td><td>한양</td><td>여자</td></tr>
+</table>
+</body>
+</html>

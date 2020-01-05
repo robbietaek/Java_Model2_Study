@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>반응선택자</title>
+
+<style type="text/css">
+/*
+a:link : 초기상태 . 방문한 적이 없는경우
+a:vistied : 방문한 적이 있는 링크
+a:hover : 마우스가 영역내부에 있는 경우
+a:active : 마우스가 클릭된 상태 
+*/
+a:link {
+	color: blue;
+}
+
+a:visited {
+	color: red;
+}
+
+a:hover {
+	color: yellow;
+}
+
+a.defult:visited {
+	color: green;
+}
+
+a.color:hover {
+	color: green;
+}
+
+a:active {
+	color: pink;
+}
+
+h1.a1{color : red;}
+h1.b1{background :black; }
+</style>
+</head>
+<body>
+	<h1>반응선택자 연습</h1>
+
+	<table>
+		<tr>
+			<td>마우스를 올리면...............
+				<hr> <b>기본값</b> <br> <a href="http://www.google.com"
+				class="default">구글</a>
+				<hr> <a href="http://www.google.com" class="color">구글</a>
+			</td>
+		</tr>
+	</table>
+	
+	<h1 class = "a1 b1"> class 속성 a1 b1</h1>
+	<h1 class = "a1"> class 속성 a1</h1>
+	<h1 class = "b1"> class 속성 b1</h1>
+
+</body>
+</html>

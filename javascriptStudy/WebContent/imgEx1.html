@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>이미지 선택하기</title>
+<script type="text/javascript">
+//sel : select 객체 전달
+//img : img 객체 전달
+
+function drawimg(sel,img){
+	img.src = "img/" + sel.value;
+}
+</script>
+<!-- 
+	onchage 이벤트 : 값의 변경 발생
+	this : 이벤트 발생된 객체 select 태그
+	document.img : img 객체는 form의 하위 객체가 아님.
+		document에 속한 객체이므로 document 객체에서 직접 접근함
+ -->
+
+</head>
+<body>
+	<form name="f">
+		<table>
+			<tr>
+				<td><select name="s" onchange="drawimg(this,document.img)">	<!-- 나의 값이 변경되는 순간 생기는 이벤트 -->
+						<option value="strawberry.jpg">아이유</option>
+						<option value="banana.jpg">지효</option>
+						<option value="apple.jpg">아이린</option>
+				</select></td>
+				<td><img name="img" src=""></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

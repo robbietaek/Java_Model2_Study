@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>window 객체 : 메세지 창 3종류</title>
+<!-- 
+alert : 확인만 가능.
+confirm : 선택가능 . 확인/취소 버튼 클릭
+		확인버튼 클릭 : true 리턴
+		취소버튼 클릭 : false 리턴
+prompt : 사용자의 입력값을 받을 수 있음.
+		확인버튼 클릭 : 입력된 값을 린턴
+		취소버튼 클릭  : 빈문자열 리턴
+ -->
+</head>
+<body>
+<form name = "f">
+<input type = "radio" name ="dbox" onclick = "this.form.echo.value=alert('alert 메세지 창 호출')">
+alert 메세지 창 호출<br>
+<input type = "radio" name ="dbox" onclick = "this.form.echo.value=confirm('confirm 메세지 창 호출')">
+confirm 메세지 창 호출<br>
+<input type = "radio" name ="dbox" onclick = "this.form.echo.value=prompt('promtp 메세지 창 호출')">
+prompt 메세지 창 호출<br>
+<input type = "text" name = "echo">
+</form>
+</body>
+</html>

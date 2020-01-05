@@ -1,0 +1,50 @@
+1. Servlet 과 jsp
+   Servlet : HttpServlet 클래스 상속 받기
+   			 doGet : get방식 요청 호출 메서드.
+   			 		 get방식이 기본 호출 방식
+			 doPost : post방식 요청 호출 메서드
+			 			<form method="post"...>
+			 jsp : 서블릿으로 변환되어 실행됨	.
+					서블릿의 __jspService() 메서드에 알고리즘이 생성됨.
+					
+					
+2. 한글 부분
+	get 방식 : server.xml 부분에서 URIEncoding 속성으로 처리
+	post 방식 : request.setCharacterEncoding("euc-kr"); 
+	
+	
+3. jsp 기본 구성 요소
+	-주석
+	jsp 주석 : <%-- --%> 가장 강력한 주석(Servlet변환시 제외가 되어버린다.)
+	java 주석 : <% // /*  */ %> 컴파일시 제외된다. 자바영역에서 처리되는 주석
+	html 주석 : <!-- --!> =>서버에서는 주석이 아님.
+			   브라우저에서 html로 번역시 주석임.
+			   
+	-지시어(Directive) => jsp 페이지의 특징을 속성으로 설정 기능
+	page	: 속성을 통해서 다양한 기능을 설정. 반드시 존재해야함 (import)
+				<%@page 속성.......%>
+	include	: 다른 페이지를 포함할 수 있음. 하나의 Servlet 으로 처리됨.
+				<%@include file = "페이지명" %>
+	taglib	: EL, JSTL 을 표현하는데 사용하는 지시어
+				<%@taglib ... %>
+	
+	-스크립트(Script) : 자바 영역	
+	 -스크립트릿(Scriptlet) : 알고리즘의 영역
+	 		<% 자바소스 %>				_jspService 메서드에 소스로 생성됨
+	 -표현식(Expression) : 브라우저에 값을 출력함
+	 		<%= 변수 또는 수식 또는 리턴값이 있는 메서드, 리터널 %>
+	 -선언문(Declaration) : jsp 서블릿의 멤버로 생성부분, 거의 사용안함.
+   			<%! 자바소스 %> 		 
+   			
+4. jsp 내장 객체 (8+1)	: 객체 생성 필요 없이 바로 사용 가능한 객체
+	-request : 요청객체 (가장중요)
+	-response : 응답객체 (request가 있으면 반드시 있기마련)
+	-session : 세션객체 (브라우저의 상태정보를 저장하는 객체)
+	-application : 웹 어플리케이션 객체.
+	-pageContext : 현재 페이지의 자원정보 저장.
+	--------------------------------------------------------이 5개가 엄청 중요함 반드시 외워야함.
+	-out : 브라우저 출력 객체
+	-config : 서블릿의 상태정보를 저장하는 객체, 주로 서블릿을 통해 사용함(jsp 거의 사용하지 않음)
+	-page : this임. 거의 사용안함.
+	-exception : 예외객체 . 일반페이지에는 없고, 예외 페이지에서만 존재
+	

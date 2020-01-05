@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!-- 
+openex1.html 페이지 inputchecked.html 페이지를 open
+openex1.html 페이지에서 inputcheckex.html 페이지 접근
+	nw변수로 접근가능
+	
+	inputcheckex.html 페이제엇 openex1.html 페이지 접근
+	opener 접근 가능
+	
+	현재페이지의 window 객체접근
+	self로 접근
+	window로 접근
+ -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>새창 열기</title>
+<script type="text/javascript">
+
+	var nw;
+	function open_win(){
+		//새로운 윈도를 생성하는 기능
+		// "intputcheckEx.html" : 새로운 윈도에 호출될 html 페이지 지정
+		// "login" : 윈도우 이름
+		// option : width = 600 가로 길이.
+		//			height = 200 세로길이
+		//			menubar = no : 메뉴바 출력안함
+		//			top = 200, left = 200 : 윈도가 보여지는 위치
+		//	nw : 새로 생성된 윈도우 객체 지정. 팝업창의 최상위 객체인 window임.
+	nw = open("inputcheckEx.html", "login",
+			"width=600, height = 300, menubar=no, top=200, left=200")
+	nw.onload = function(){		
+			nw.document.f.id.value = id.value;
+			nw.document.f.pw.value = pw.value;
+		}
+			
+// 			nw.document.write("새로운 윈도 입니다.<br>")
+// 			nw.document.write("openEx1.html 페이지에서 open 함수로 생성되었습니다.<br>")
+// 			sum = parseInt(num1.value) + parseInt(num2.value);
+// 			nw.document.write(num1.value + "+" +num2.value + "=" +sum)
+	}
+	
+	function close_win(){
+		nw.close();
+	}
+			
+</script>
+</head>
+<body>
+<a href = "javascript:open_win()">새창열기</a><br>
+<a href = "javascript:open_close()">새창닫기</a><br>
+<input type = "text"  id= "num1" size = "5">+
+<input type = "text"  id= "num2" size = "5">
+<hr>
+아이디 : <input type = "text" id = "id" size = "5"><br>
+비밀번호 : <input type = "text" id = "pw" size = "5">
+</body>
+</html>

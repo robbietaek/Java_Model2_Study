@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function copyvalue(){
+	document.f.num2.value = document.f.num1.value;		
+	}
+	
+	function numsum(){
+		sum =0;
+		evensum = 0;
+		oddsum = 0;
+		
+		for(var i =1; i<=document.f2.num.value;i++){
+			sum += i
+			if(i%2==0){
+				evensum += i;
+			}
+			if(i%2==1){
+				oddsum += i;
+			}
+		}
+		document.f2.sum.value = sum;
+		document.f2.evensum.value = evensum;
+		document.f2.oddsum.value = oddsum;
+	}
+</script>
+</head>
+<body>
+<form name = "f">
+	<input type = "text" name = "num1"><br>
+	<input type = "text" name = "num2">
+		<input type = "button" value= "복사" onclick = "copyvalue()">
+</form>
+<h1>입력된 숫자까지의 합계 구하기</h1>
+<form name = "f2">
+	<input type = "text" name = "num"><br>
+	<input type = "button" value= "합계" onclick = "numsum()"> <br>
+	<td>합계</td><input type = "text" name = "sum">
+	<br>
+	<td>짝수합계</td><input type = "text" name = "evensum">
+	<br>
+	<td>홀수합계</td><input type = "text" name = "oddsum">
+</form>
+</body>
+</html>

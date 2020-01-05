@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>window 객체의 함수</title>
+</head>
+<body>
+<h3>window 객체의 함수</h3>
+<script type="text/javascript">
+	var i = 2;
+	document.write('eval(3+4*(5-i))='+eval(3+4*(5-i))+"<br>");	//eval 은 문자열을 수식으로 변환. 결과 리턴
+	document.write('isNaN("한국")='+isNaN("한국")+"<br>");	//isNaN : 문자열이 수식이 아니니? 결과 TRUE
+	document.write('isNaN("123")='+isNaN("123")+"<br>"); //isNaN : 문자열이 수식이 아니니? 결과 FALSE
+	document.write('parseInt("10")='+parseInt("10")+"<br>");			//10진수
+	document.write('parseInt("12",8)='+parseInt("12",8)+"<br>");		//8진수
+	document.write('parseInt("FF",16)='+parseInt("FF",16)+"<br>");		//16진수
+	
+</script>
+</body>
+</html>

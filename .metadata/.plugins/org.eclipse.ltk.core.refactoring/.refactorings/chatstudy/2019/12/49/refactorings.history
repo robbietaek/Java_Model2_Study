@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;chatstudy.broadcastsocket&apos; to &apos;Broadsocket&apos;&#x0D;&#x0A;- Original project: &apos;chatstudy&apos;&#x0D;&#x0A;- Original element: &apos;chatstudy.broadcastsocket&apos;&#x0D;&#x0A;- Renamed element: &apos;chatstudy.Broadsocket&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;broadcastsocket&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;chatstudy{broadcastsocket.java[broadcastsocket" matchStrategy="1" name="Broadsocket" qualified="false" references="true" similarDeclarations="false" stamp="1575252089710" textual="false" version="1.0"/>
+</session>

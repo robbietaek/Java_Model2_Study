@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript" 
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	
+	$("h1").click(function(){
+		var len = $("h1").length;
+		var thtml = $(this).html();
+		$("#wrap").append("<h1>"+len+"-"+thtml+"</h1>")
+	})
+	
+	
+ 	var num = 0;
+	$("#wrap").click(function(){	
+		$(this).html(function(index,html){
+			num++
+			return html + "<br><h1>"+ num + "- Header</h1>"
+		})
+	}) 
+})
+</script>
+</head>
+<body>
+wrap div 태그 내부에 h1 태그 추가하기
+<hr>
+    <div id="wrap">
+        <h1>Header</h1>
+    </div>
+<hr>
+</body>
+</html>

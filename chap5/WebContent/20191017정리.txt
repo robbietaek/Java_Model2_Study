@@ -1,0 +1,33 @@
+1. jsp 내장객체 : jsp 페이지에서 선언도, 생성도 필요없이 이미 존재하는 객체
+				자바 영역에서 사용되는 객체
+
+	-스크립트릿 : <% %>
+			_jspService메서드의 내부에 생성되는 부분
+	-표현식	: <%= %>
+				out.print(...)
+				/* */ 사용가능, ; 사용불가
+	-선언문	: <%! %>	:	멤버변환됨.
+	
+	8 + 1 
+	request : 요청객체 
+	response  : 응답객체, 리다이렉트
+	pageContent : forward
+	session : 
+	application : 
+	out : 
+	config : 
+	page : 
+	exception : 
+	
+2. 스크립트 : 자바영역
+
+-주석
+-지시어
+-스크립트
+-내장객체
+-액션태그
+
+page 영역 : 1개 jsp (PageContext)
+request 영역 : 1요청	request 객체
+session 영역 : 1브라우저	session 객체
+application 영역 : 1 웹어플리케이션 application 객체

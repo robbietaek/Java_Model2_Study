@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Jquery를 이용한 ajax 연습</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#btn1").click(function(){
+		$.ajax("ajax1-1.jsp",{
+			success : function(data){	//콜백함수
+				$("body").append(data);
+			},
+			error : function(e){
+				alert("서버오류" + e.status);
+			}
+		})
+	})
+	$("#rmbtn1").click(function(){
+		//$("h1").eq(0)
+		//$("h1").get(-1) == $("h1:last")
+		$("h1").get(-1).remove();
+	})
+	
+	$("#btn2").click(function(){
+//		var data = "name=홍길동&age=20";
+		var data = {name:"홍길동",age:"15"}
+		$.ajax({
+			url : "ajax1-2.jsp",		//서버의 요청페이지
+			type : "POST",				//method 방식 GET || POST 방식중 선택
+			data : data,	//data : 파라미터 설정
+			success : function(data){	//서버가 성공적으로 리턴값이 왔을 때
+				$("body").append(data)	//body에 전달
+			},
+			error : function(e){
+				alert("서버오류" + e.status)
+			}
+		})
+	})
+	$("#rmbtn2").click(function(){
+		$("h2").eq(0).remove();
+	})
+})
+</script>
+</head>
+<body>
+<button id = "btn1">ajax1-1.jsp 호출</button>
+<button id = "rmbtn1">ajax1-1.jsp 추가된 내용 제거</button>
+<button id = "btn2">ajax1-2.jsp 호출</button>
+<button id = "rmbtn2">ajax1-2.jsp 추가된 내용 제거</button>
+</body>
+</html>

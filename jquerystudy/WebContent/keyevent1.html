@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	var num1 = $("h1").text();
+	/*
+	key 이벤트 : 키보드에서 문자가 입력된 경우.
+	keydown : 키가 눌려지는 경우
+	keypress : 키를 누르고 있는 상태
+	keyup : 키에서 손을 뗄 때
+	*/
+	$("textarea").keyup(function(){	
+		var num2 = num1 - $("textarea").val().length;
+		if(num2>0){
+			$("#remainnum").html(num2).css("color","black");
+		}else{
+			$("#remainnum").html(num2 + " 제한 수를 초과했습니다.").css("color","red");
+		}
+	})
+})
+</script>
+</head>
+<body>
+<p>글쓰기</p>
+<h1 id = "remainnum">100</h1>
+<textarea rows = "10" cols = "70"></textarea>
+</body>
+</html>

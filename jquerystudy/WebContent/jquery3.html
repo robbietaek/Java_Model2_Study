@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>select 태그의 선택된 값을 5초 후에 alert 창으로 띄우기</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+/*
+ * $(document).ready(function(){
+	 
+ })
+ */
+$(function(){
+	//setTimeout(함수, 밀리초) : 밀리초 이후에 해당 함수를 실행. 
+	//option:selected : option 태그중 선택된 option 태그 선택
+	setTimeout(function(){
+		var value = $("select>option:selected").val();
+		alert(value)
+	},5000)
+})
+</script>
+</head>
+<body>
+5초 뒤에 자동선택됩니다.
+<select>
+<option>iron</option>
+<option>bronze</option>
+<option>silver</option>
+<option>gold</option>
+<option>platinum</option>
+<option>diamond</option>
+</select>
+</body>
+</html>

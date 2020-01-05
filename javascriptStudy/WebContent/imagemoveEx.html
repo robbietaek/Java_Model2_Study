@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+function movimg(){
+	var left = layer1.style.left; //0px
+	var top = layer1.style.top;	//100px
+	mx = parseInt(left.substring(0,left.indexOf("px")));
+	//mx : 0
+	my = parseInt(top.substring(0,top.indexOf("px")));
+	//my : 100
+	layer1.style.left = mx+10 + "px";
+	layer1.style.top = my+10 + "px";
+	
+		
+	if(mx>500){
+		clearTimeout("movimg()");	//setTimeout 설정 해제
+		setInterval(function(){
+			layer1.style.left = "0px";
+			layer1.style.top = "100px";	
+			layer1.style.backgroundColor = "blue";			//자바스크립트는 -을 쓸 수 없기 때문에 변경되는 부분을 대문자로 써 주어야 한다.
+		},2000)
+		clearInterval(interval);
+	} else{
+		setTimeout("movimg()",1);	//0.01초 당 함수를 호출
+									//콜백함수 : 호출한 함수가 다시 나의 함수를 호출
+	}
+}
+
+</script>
+</head>
+<body>
+<input type="button" value = "이동" onclick = "movimg()">
+<div id = "layer1"
+	style = "left:0px; top:100px; position:absolute; background-color : red;">
+	<img src="img/0_over.jpg">
+</div>
+</body>
+</html>

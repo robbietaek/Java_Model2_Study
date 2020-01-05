@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>animate 예제 3</title>
+<style type="text/css">
+	div{
+	width : 50px; height : 50px;
+	background-color : orange;
+	position: relative;
+	}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("div").each(function(index){
+		//animate를 지연시켜서 실행함.
+		$(this).delay(index * 300).animate({
+			left : 300
+		},'standard')
+	})
+})
+</script>
+</head>
+<body>
+<div></div><div></div><div></div><div></div><div></div><div></div>
+</body>
+</html>

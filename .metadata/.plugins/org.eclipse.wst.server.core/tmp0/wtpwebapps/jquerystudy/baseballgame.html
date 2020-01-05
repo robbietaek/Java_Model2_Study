@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>야구게임</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style type="text/css">
+* {
+	text-align: center;
+	margin: 0px;
+	padding: 0px;
+}
+</style>
+<script type="text/javascript">
+	var trycount = 0; //시도 횟수
+	var nums = new Array(10); //0부터 9 까지 숫자를 배열로 저장.
+	var answer = new Array(4); //nums 배열에서 임의의 수 4개를 저장. 정답숫자
+	var inputarr = new Array(4); //입력된 숫자 4개 저장
+	for (var i = 0; i < nums.length; i++) {
+		nums[i] = i;
+	}
+	for (var a = 0; a < 10000; a++) {
+		var ran = Math.floor(Math.random() * nums.length);
+		var tmp = nums[0];
+		nums[0] = nums[ran];
+		nums[ran] = tmp;
+	}
+
+	for (var i = 0; i < 4; i++) {
+		answer[i] = nums[i];
+		console.log(answer[i]);
+	}
+	$(function() {
+		for (var i = 0; i < 4; i++) {
+			$("#card").append(
+					"<img width = '100' height = '100' border = '1' />");
+		} //아무표시없는 이미지 태그를 넣었다.
+		$("#inbtn").click(function() {
+			if (!$("#userNum").val()) {
+				alert("숫자를 입력해주세요");
+				$("#userNum").focus();
+				return;
+			}
+			//숫자타입체크
+			if (isNaN($("#userNum").val())) {
+				alert('숫자타입으로 입력해주세요');
+				$("#userNum").focus();
+				return;
+			}
+			if ($("#userNum").val().length != 4) {
+				alert("4자리 숫자로 입력해주세요");
+				$("#userNum").focus();
+				return;
+			}
+			inputarr = $("#userNum").val().split("");
+			for ( var v1 in inputarr) {
+				var cc = 0;
+				for ( var v2 in inputarr) {
+					if (inputarr[v1] == inputarr[v2]) {
+						cc++;
+					}
+				}
+				if (cc > 1) {
+					alert("중복된 숫자를 입력할 수 없습니다");
+					$("#userNum").focus();
+					return;
+				}
+			}
+			matchingNum($("#userNum").val());
+			$("#userNum").val("");
+		})
+		//숫자를 입력하는 input 태그에서 enter키가 입력된 경우
+		//입력버튼을 클릭한 이벤트 발생하도록 설정
+		$("#userNum").keyup(function(event) {
+			if (event.keyCode == 13) {	//enter key 의 Ascii 값
+				$("#inbtn").click();
+			}
+		})
+	})
+	//strike, ball 설정
+	function matchingNum(usernum) {
+		var strike = 0;
+		var ball = 0;
+		for (var i = 0; i < 4; i++) {
+			for (var j = 0; j < 4; j++) {
+				if (answer[j] == inputarr[i]) {
+					if (i == j) {
+						strike++;
+					} else {
+						ball++;
+					}
+				}
+			}
+		}
+		if (strike == 4) {
+			var wrap = document.getElementById("wrap");
+			$("#wrap").append("<h1>축하합니다. 정답입니다.</h1>").append("<br><input type = 'button' value ='게임 다시시작하기' id = 'restart'>")
+			$("#restart").click(function(){
+				location.reload();
+			})
+			$("#wrap").append("<button>다시시작</button>")
+			$("button").click(function(){
+				location.reload();
+			})
+			$("#card img").each(function(index) {
+				$(this).attr("src", "./nums/num" + answer[index] + ".jpg");
+				$(this).addClass("w3-circle");
+			})
+		} else {
+			strike += "S ";
+			ball += "B";
+			$("#right").append(
+					"<span>" + (++trycount) + "번째 도전 : " + strike + ball
+							+ ",유저 입력값 : " + usernum + "</span><br>")
+		}
+	}
+</script>
+</head>
+<body>
+<h3>숫자야구</h3>
+	<div id="wrap" class="w3-container">
+		<div id="card"></div>
+		<div id="left">
+			<input type="text" id="userNum" name="userNum"> <input
+				type="button" value="입력" id="inbtn">
+		</div>
+		<div id="right"></div>
+	</div>
+</body>
+</html>

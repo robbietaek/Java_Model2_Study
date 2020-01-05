@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Math 클래스 예제</title>
+</head>
+<body>
+<script type="text/javascript">
+
+//Math.random() : 0~1.0 미만 임의의 실수
+//Math.floor() : 현재 값보다 작은 근사정수
+//Math.ceil() : 현재 값보다 큰 근사정수
+
+function getNumber(){
+	return Math.floor(Math.random()*1000)%10;
+}
+
+var op = new Array("+","-","*","/");
+
+function getOp(){
+	return op[Math.floor(Math.random()*4)];
+}
+
+str = getNumber() + getOp() + getNumber();
+ans = prompt(str + "=",0);	//0 : 기본값
+res = eval(str);
+
+if(res != ans){
+	document.write("입력한 값:" + ans);
+	document.write("<font color = 'red' size = '5'> 오답입니다.</font>")
+} else{
+	document.write("입력한 값:" + ans);
+	document.write("<font color = 'blue' size = '7'> 정답입니다.</font>")
+}
+
+</script>
+</body>
+</html>

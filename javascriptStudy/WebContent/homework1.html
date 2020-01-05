@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>약수구하기</title>
+<style type="text/css">
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+th, td {
+	border: 3px solid #bcbcbc;
+	text-align: center;
+	padding: 8px;
+}
+
+th {
+	background-color: #f2f2f2;
+	color: #111111;
+}
+
+td {
+	background-color: #f2f2f2;
+}
+
+caption {
+	align: center;
+}
+</style>
+<script type="text/javascript">
+	function calc() {
+		var num = parseInt(document.f.number.value);
+		var html = "<tr><cation>" + num + "의 약수</caption></tr><br> <table><tr>"
+		for (i = 1; i <= num; i++) {
+			if (num % i == 0) {
+				html += "<td>" + i + "</td>"
+			}
+		}
+		html += "</tr></table>";
+		document.getElementById("cal1").innerHTML = html
+	}
+</script>
+</head>
+<body>
+	<form name="f">
+		<input type="text" name="number"> <input type="button"
+			value="약수 구하기" onclick="calc()"><br> <span id="cal1"></span>
+	</form>
+</body>
+</html>

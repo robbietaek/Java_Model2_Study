@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		//모든 이미지 태그 width, height 를 설정하겠다.
+		//attr : 속성 등록, 조회
+//		$("img").attr({"width":"500px","height":"400px"});
+/* 		$("img").attr("width",function(index){
+			return (index+1) * 150;
+		}) */
+		
+		//모든 이미지 태그의 width 를 200,400,600으로 height 는 300 설정
+		
+		$("img").attr({
+			width : function(index){
+				return (index+1) * 200;
+			},height : 300
+		});
+		
+		//모든 이미지 태그의 src 속성을 제거
+//		$("img").removeAttr("src")
+		
+	})
+</script>
+</head>
+<body>
+	<img src = "UNA1.gif" />
+	<img src = "UNA2.gif" />
+	<img src = "UNA3.jpg" />
+</body>
+</html>

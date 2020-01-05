@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>xml연습</title>
+<script type="text/javascript" src="ajax.js"></script>
+<script type="text/javascript">
+	function doXml() {
+		sendRequest("house.xml", null, parseXml, "GET");
+	}
+	function parseXml() {
+		if (ajax.readyState == 4) {
+			if (ajax.status == 200) {
+				listAllhouses();
+			} 
+		}
+	}
+	function listAllhouses() {
+		var xmlDoc = ajax.responseXML;
+		var house = xmlDoc.getElementsByTagName("property");
+		var htmldata = "<table border='1'><tr><th>주소</th><th>가격</th><th>코멘트</th></tr>";
+		for (var i = 0; i < house.length; i++) {
+			var address = house[i].getElementsByTagName("address")[0].childNodes[0].nodeValue;
+			var price = house[i].getElementsByTagName("price")[0].childNodes[0].nodeValue;
+			var comment = house[i].getElementsByTagName("comment")[0].childNodes[0].nodeValue;
+			htmldata += "<tr><td>" + address + "</td><td>" + price + "</td><td>" + comment + "</td></tr>"
+			}
+		htmldata += "<tr><td colspan = '3' align = 'center'>총 매물 건수 :" +house.length+"건</td></tr></table>"
+		resultBody.innerHTML = "<h2>XML 주택정보 </h2>"
+		resultBody.innerHTML += htmldata;
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="매물 검색" onclick="doXml()">
+	<div id="resultBody"></div>
+</body>
+</html>

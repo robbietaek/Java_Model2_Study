@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!-- /WebContent/fromEx1.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>입력받을 수 있는 태그 : input 태그</title>
+</head>
+<body>
+<form>
+	<!-- 사용자가 입력하는 태그 : input태그 -->
+	<input type = "text" name = "text" value = "text"><br>	<!-- 한줄 에디터 -->
+	<input type = "password" name = "password" value = "password"><br> <!-- 비밀번호 -->
+	<input type = "file" name = "file" value = "file"><br>	<!-- 파일 선택 -->
+	<input type = "checkbox" name = "checkbox" value = "1">checkbox1<br> <!-- 토글 -->
+	<input type = "checkbox" name = "checkbox" value = "2">checkbox2<br>
+	<input type = "radio" name = "radio" value = "1">radio1<br>	<!-- 이름이 같은 몇개들 중 한개만 선택 -->
+	<input type = "radio" name = "radio" value = "2">radio2<br>
+	<!-- 보이지 않는 입력 태그 : input 태그 -->
+	<input type = "hidden" name = "hidden" value = "hidden"><br>
+	<!-- 버튼 
+	botton : onclick 이벤트로 기능을 구현
+	reset : 화면 초기화
+	submit : form 태그 하위에 존재버튼. input 태그의 값을 외부로 전송함.
+			 submit 버튼 클릭시 form 태그에 onsubmit 이벤트가 발생함.
+	-->
+	<input type = "button" value ="button" onclick = "alert('botton클릭')"><br>
+	<input type = "reset" value = "reset"><br>
+	<input type = "submit" value = "submit"><br>
+
+</form>
+</body>
+</html>

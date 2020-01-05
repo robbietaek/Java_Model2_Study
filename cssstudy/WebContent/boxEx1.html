@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>테두리 예제</title>
+<style type="text/css">
+div {
+	border: 3px solid yellow;
+}
+
+.m1 {
+	border-style: dotted;
+	margin: 20px;
+	width: 100px;
+	height: 100px;
+	background: blue;
+}
+/* margin 20px 는 left, top, right, bottom 모두 20px */
+.m2 {
+	border-style: solid;
+	margin-top: 10px;
+	margin-right: 100px;
+	margin-bottom: 10px;
+	margin-left: 100px;
+	
+	width: 100px;
+	height: 100px;
+	background: red;
+}
+
+.m3 {
+	border-style: inherit;
+	margin: 100px 100px 50px 10px;
+	/*시계방향이다*/
+	width: 100px;
+	height: 100px;
+	background: green;
+}
+</style>
+</head>
+<body>
+	<div class="m1">박스1</div>
+	<div class="m2">박스2</div>
+	<div class="m3">박스3</div>
+</body>
+</html>

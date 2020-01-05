@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>클릭된 h1 태그의 내용을 alert 창으로 출력하기</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("body> h1").click(function(){
+		var value = $(this).html();
+		alert(value)
+	})
+	
+	$("div").click(function(){
+	//	var h = $(this).find("h1").text();
+	//	var p = $(this).find("p").text();
+		var h = $("h1",this).text();
+		var p = $("p",this).text();
+
+		alert(h+"\n"+p)
+	})
+	
+	
+})
+</script>
+</head>
+<body>
+<h1>Header - 0</h1>
+<h1>Header - 1</h1>
+<h1>Header - 2</h1>
+<div><h1>DIV Header0</h1><p>DIV P 0</p></div>
+<div><h1>DIV Header1</h1><p>DIV P 1</p></div>
+<div><h1>DIV Header2</h1><p>DIV P 2</p></div>
+</body>
+</html>

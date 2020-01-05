@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>그림맞추기 게임</title>
+<style type="text/css">
+table, td {
+	border: 1px solid gray;
+}
+
+table {
+	border-collapse: collapse;
+}
+</style>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	var level = 4;
+	$(document).ready(function() {
+		shuffle();
+		editHtml();
+		game();
+	})
+	function shuffle() { //model(카드) 배열의 항목들을 cnt 만큼 섞기
+		model = [ "S_1.jpg", "S_1.jpg", "S_2.jpg", "S_2.jpg", "S_3.jpg",
+				"S_3.jpg", "S_4.jpg", "S_4.jpg", "S_5.jpg", "S_5.jpg",
+				"S_6.jpg", "S_6.jpg", "S_7.jpg", "S_7.jpg", "S_8.jpg",
+				"S_8.jpg", "S_9.jpg", "S_9.jpg", "S_10.jpg", "S_10.jpg",
+				"pic00.png", "pic00.png", "pic01.png", "pic01.png",
+				"pic02.png", "pic02.png", "pic03.png", "pic03.png",
+				"pic04.png", "pic04.png", "pic05.png", "pic05.png",
+				"pic06.png", "pic06.png", "pic07.png", "pic07.png" ];
+		cnt = level * level; //그림의 갯수	4*4 =16개
+		for (var a = 0; a < 1000; a++) {
+			var ran = Math.floor(Math.random() * cnt);	//Math.floor : 실수보다 작은근사 정수 , Math.ceil : 실수보다 큰 근사정수
+			var tmp = model[0];
+			model[0] = model[ran];
+			model[ran] = tmp;
+		}
+	}	//shuffle 종료 => model의 이미지가 필요한 갯수만큼만 섞기
+	function editHtml() {	//이미지를 4행 4열로 출력
+		var board = "<table>";
+		for (var i = 0; i < cnt; i++) {
+			if ((i % level) == 0) {
+				board += "<tr>";
+			}
+			board += "<td><img class = 'pic' src = './imgs/"+model[i] 
+			+ "' value = '" + model[i] +"' width ='100' height = '100'></td>";
+			if ((i % level) == (level - 1)) {
+				board += "</tr>";
+			}
+		}
+	$("#board").html(board+"</table>");
+	}
+	function game(){
+		//2초 후에 함수를 실행
+		setTimeout(function(){
+			$(".pic").each(function(c,pic){	//class 속성이 pic 인 태그 =? img 태그
+				$(this).css("opacity","0.01");	//opacity : 투명도
+			})
+		},2000);
+		var total = 0;	//클릭된 갯수
+		var count = 0;	//첫번째선택, 두번째 선택
+		var success = 0;	//성공한 갯수가 8개가 성공한 경우 게임 종료
+		var onePic = null;	//첫번째 클릭된 이미지
+		var twoPic = null;	//두번째 클릭된 이미지
+		var onePictr = 0;
+		var onePictd = 0;
+		var onePictr = 0;
+		var towPictd = 0;
+		//이미지를 클릭한 경우 이미지를 등록
+		$(".pic").click(function(){		//이미지가 클릭 됐을 경우 . 이벤트 처리
+			if(!$(this).is(".diepic")){	//boolean 으로 결과값이 나오며 클릭된 이미지의 class 속성이 diepic 가 아닌경우
+				total++;
+				$(this).css("opacity","1");	//클릭된 이미지 보여줌.
+				count++;
+				if(count == 1){		//첫번째 클릭된 이미지
+					onePic = $(this);
+					onePictr = $(this).parent().parent().index();	//tr의 인덱스
+					onePictd = $(this).parent().index();			//td의 인덱스
+				}else if(count == 2){	//두번째 클릭된 이미지
+					twoPic = $(this);	//같은 이미지 선택한 경우
+					twoPictr = $(this).parent().parent().index();	//tr의 인덱스
+					twoPictd = $(this).parent().index();			//td의 인덱스
+
+				 	if((onePic.attr("src")==twoPic.attr("src")) && (onePictr!=twoPictr || onePictd!=twoPictd)){
+						success++;	//성공한 갯수를 하나 증가시킴
+						onePic.addClass("diepic");	//diepic 속성을 추가함
+						twoPic.addClass("diepic");	//이미 찾았으므로 diepic 속성을 추가
+						onePic.disable=true;	//선택 불가능 하도록 disable
+						twoPic.disable=true;	//비활성화되었음
+						if(cnt/2 == success){	//모든 이미지 찾기 성공
+							alert(total+"번 만에 성공. 게임종료")
+							setTimeout(function(){
+								if(confirm("게임을 계속하시겠습니까?")){
+									location.reload();	//url 을 다시 실행
+								}
+							},2000)
+						}
+					} else{	//다른 이미지인 경우
+						setTimeout(function(){
+							onePic.css("opacity","0.01");
+							twoPic.css("opacity","0.01");
+						},50);
+					}
+					count = 0;	//이미지 선택을 clear
+				}else{	//count > 2 큰경우
+					alert("프로그램 오류 발생")
+				}
+			}//diepic 가 아닌경우 조건문의 끝
+		})	//클릭이벤트 종료
+	}	//game 함수 종료
+	function gamestart(sel){
+		//sel : select 태그
+		level = parseInt(sel.value);
+		shuffle();
+		editHtml();
+		game();
+	}
+</script>
+</head>
+<body>
+	<select id="level" onchange="gamestart(this)">
+		<option value="2">2X2</option>
+		<option value="4" selected="selected">4X4</option>
+		<option value="6">6X6</option>
+	</select>
+	<div id="board"></div>
+</body>
+</html>

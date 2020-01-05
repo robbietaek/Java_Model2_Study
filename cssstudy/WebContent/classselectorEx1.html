@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>클래스선택자</title>
+<!-- 웹표준에서 id속성은 페이지에서 유일함을 의미함.
+class 속성은 분류를 의미함. 중복을 허용함. -->
+<style type="text/css">
+.select1 {
+	color: red;
+}
+
+.select2 {
+	color: yellow;
+}
+
+.select3 {
+	color: pink;
+}
+
+.select4 {
+	color: blue;
+}
+
+input[type="text"]{background : purple;}
+input[type="password"]{background : green;}
+
+#yellow {background : yellow;}
+
+</style>
+</head>
+<body>
+
+
+
+	<ul>
+		<li class="select1">사과</li>
+		<li class="select2">바나나</li>
+		<li class="select3">오렌지</li>
+		<li class="select4">감</li>
+	</ul>
+	
+	<form>
+	<input type = "text">
+	<input type = "password">
+	<br>
+	<input type = "text" id = "yellow">
+	<input type = "password">
+	</form>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<?xml version = "1.0" encoding ="euc-kr" ?>
+<states><!-- root tag이다 . 1개만 가능함 XML은 무조건 트리구조로 만들어져야하기 때문에 root는 한개뿐 . 이런한 구조를 DOM 트리라고 한다. -->
+	<north>
+		<state>강북구</state>
+		<state>노원구</state>
+		<state>성북구</state>
+	</north>
+	<south>
+		<state>강남구</state>
+		<state>서초구</state>
+		<state>관악구</state>
+	</south>
+	<east>
+		<state>강동구</state>
+		<state>송파구</state>
+		<state>성동구</state>
+	</east>
+	<west>
+		<state>강서구</state>
+		<state>구로구</state>
+		<state>양천구</state>
+	</west>
+</states>

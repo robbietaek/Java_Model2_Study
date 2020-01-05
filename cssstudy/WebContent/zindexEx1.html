@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>zindex 속성 예제 </title>
+<style type = "text/css">
+div{width : 200px; height : 200px;}
+div:hover{color:#fff; background-color:black;}
+.p0{background : pink;}
+.p1{position : fixed; top:10px; right:0px; background : yellow;  z-index : 100;}
+.p2{position : relative; top:10px; left:10px; background : gray;}
+.p3{position : absolute; bottom:10px; right:100px; background : blue;}
+.p4{position : absolute; top:150px; left:150px; background : red;}
+
+/* z-index 를 쓸 때에는 반드시 position 과 함께 써야함 */
+/*
+1. static : 차례대로 배치. position의 기본값. z-index 사용불가
+2. relative : 앞의 요소의 상대좌표
+3. fixed : 절대좌표. 기준이 브라우저 기준. 스크롤시에도 화면이 고정됨
+4. absolute : 절대좌표. 기준이 document 임
+
+*/
+</style>
+</head>
+<body>
+<div class = "p0">p0 box</div>
+<div class = "p1">p1 box</div>
+<div class = "p2">p2 box</div>
+<div class = "p3">p3 box</div>
+<div class = "p4">p4 box</div>
+</body>
+</html>

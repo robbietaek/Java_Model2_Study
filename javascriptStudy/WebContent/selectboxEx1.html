@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>select 박스에서 선택된 항목을 alert 창에 띄우기</title>
+<script type="text/javascript">
+function nameprint(s){
+	var data = prompt(s.value);		//data = prompt 에서 입력받은 내용을 저장
+	//data 값으로 select의 선택된 값을 변경
+	s.value = data;
+}
+</script>
+</head>
+<body>
+<form name = "f">
+과일 : <select name = "s" onchange = "nameprint(this)" >
+	<option>사과</option><option>감</option>
+	<option>배</option><option>딸기</option>
+</select>
+</form>
+</body>
+</html>

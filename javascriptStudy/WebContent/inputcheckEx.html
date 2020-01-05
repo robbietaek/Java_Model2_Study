@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>로그인</title>
+<script type="text/javascript">
+function checkinput(f){
+	
+	if(f.id.value == ""){
+		alert("아이디를 입력하세요")
+		f.id.focus();
+		return false;	//이것 때문에 넘어가지를 못하는 것임. 
+	}
+	
+	if(f.pw.value==""){
+		alert("비밀번호를 입력하세요")
+		f.pw.focus();
+		return false;
+	}
+	
+	opener.document.getElementById("id").value= f.id.value;
+	opener.document.getElementById("pw").value= f.pw.value;
+	self.close();
+	return false;
+}
+</script>
+</head>
+<body>
+<!-- onsubmit : form에 소속된 submit 버튼이 크릭되면 form에 발생되는 이벤트
+	form에 소속된 submit 버튼이 클릭되면  form에 발생되는 이벤트
+	this : form 객체
+	함수의 결과가 false 인 경우 이벤트가 취소됨. action 페이지 이동안됨
+ -->
+<form name ="f" method="post" action="problem2.html" onsubmit="return checkinput(this)">
+아이디 : <input type = "text" name = "id"><br>
+비밀번호 : <input type = "text" name = "pw"><br>
+<input type = "submit" value = "로그인">
+</form>
+</body>
+</html>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 2 elements to &apos;jstlcoreEx1&apos;&#x0D;&#x0A;- Original project: &apos;chap5&apos;&#x0D;&#x0A;- Destination element: &apos;jstlcoreEx1&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     requestForm1.jsp&#x0D;&#x0A;     request1.jsp" description="Copy files" element1="WebContent/requestForm1.jsp" element2="WebContent/request1.jsp" files="2" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1572404939303" target="/jspstudy2/WebContent/jstlcoreEx1" units="0" version="1.0"/>
+</session>

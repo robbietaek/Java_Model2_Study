@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!-- /WebContent/htmlEx5.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Table 태그 : 표그리기</title>
+</head>
+<body>
+	<table border="10" style="border-collapse: collapse;">
+		<!-- collapse는 테두리의 간격없이 붙여서 해줘 -->
+		<thead>
+			<tr>
+				<th>Header1</th>
+				<th>Header2</th>
+			</tr>
+		</thead>
+		<!-- tr 은 레코드 한개를 의미한다. -->
+		<tbody>
+			<tr>
+				<td>Data1</td>
+				<td rowspan="2">Data2</td>
+			</tr>
+			<!-- th와 td는 데이터를 의미한다. -->
+			<tr>
+				<td>Data3</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="2">Foot1</td>
+			</tr>
+		</tfoot>
+		<!--   colsapn 컬럼의 열을 좌우로 합친다. rowspan 행을  위아래로 합친다.-->
+	</table>
+</body>
+</html>

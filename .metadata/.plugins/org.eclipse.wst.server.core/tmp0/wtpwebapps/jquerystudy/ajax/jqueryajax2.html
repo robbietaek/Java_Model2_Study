@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>연습하기</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#submit").click(function(event){
+		var pid = $("#id").val();
+		var ppass = $("#pass").val();
+		var data = {id: pid, pass:ppass}
+		$.ajax({
+			url : "ajax2.jsp",		//서버의 요청페이지
+			type : "POST",				//method 방식 GET || POST 방식중 선택
+			data : data,	//data : 파라미터 설정
+			success : function(data){	//서버가 성공적으로 리턴값이 왔을 때
+				$("#message").html(data)
+			},
+			error : function(e){
+				alert("서버오류" + e.status)
+			}
+		})
+		return false;	//기본 이벤트 기능 무시
+	})
+	
+	$("#btn").click(function(){
+		var data = {id : $("#id").val()}
+		$.ajax({
+			url : "ajax3.jsp",
+			type : "POST",
+			data : data,
+			success : function(data){	//서버가 성공적으로 리턴값이 왔을 때
+				$("#exist").html(data)
+				if($("h5").is(".find")){
+				$("#id").val("")
+				}
+			},
+			error : function(e){
+				alert("서버오류" + e.status)
+			}
+		})
+		return false;
+	})
+})
+</script>
+</head>
+<body>
+<!-- 
+	1. id, pass 두개의 파라미터를 ajax2.jsp 페이지에 전송하기
+	2. ajax2.jsp 페이지에서 member 테이블에서 id와 비밀번호 일치여부 검증
+		jstl 이용하기
+		로그인 성공 : 반갑습니다. name 님 내용을 id=message 부분에 출력
+		로그인 실패 : 아이디 또는 비밀번호가 틀립니다. 내용을 id = message 부분에 출력
+		
+		
+	"아이디 중복" 버튼 클릭
+	1.id 파라미터 ajax3.jsp 페이지로 전송
+	  id가 존재 : 존재하는 아이디입니다.
+	  id가 없으면 : 회원가입을 할 수 있습니다.
+		
+ -->
+<form name = "f">
+	아이디    : <input type = "text" id = "id">
+	<button id = "btn">아이디중복확인</button>
+	<div id = "exist"></div>
+	비밀번호 : <input type = "password" id = "pass"><br>
+	<input type = "submit" value = "로그인" id = "submit"><br>
+</form>
+<div id = "message"></div>
+</body>
+</html>

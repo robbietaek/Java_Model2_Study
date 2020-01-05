@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Ajax을 이용한 게시물 검색</title>
+<script type="text/javascript" src = "ajax.js"></script>
+<script type="text/javascript">
+	function loadBoard(){
+		var f = document.f;
+		var params = "column=" + f.column.value + "&find=" + f.find.value
+		sendRequest("board.jsp",params,boardList,"POST")
+		alert(params)
+	}
+	function boardList(){
+		if(ajax.status == 200){	// ajx.responseText : 서버에서 전송한 응답 내용을 저장
+			console.log(ajax.responseText)
+			list.innerHTML=ajax.responseText;
+		}else{
+			alert("서버오류:"+ajax.status)
+		}
+	}
+</script>
+</head>
+<body>
+<form name = "f">
+<select name = "column">
+	<option value= "name">글쓴이</option>
+	<option value= "subject">제목</option>
+	<option value= "content">내용</option>
+</select>
+<input type = "text" name = "find">
+<input type = "button" value="검색" onclick = "loadBoard()">
+</form>
+<div id = "list"></div>
+</body>
+</html>

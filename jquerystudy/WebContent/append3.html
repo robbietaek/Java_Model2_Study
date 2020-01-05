@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>이미지 위치 변경하기</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("img").css("width",500).css("height",400)
+	setInterval(function(){	//2초마다 함수를 호출
+//$("img").first() : 첫번째 이미지를 바디의 맨 뒤에 붙여라		
+		$("img").first().appendTo("body");
+	},2000)
+})
+</script>
+</head>
+<body>
+	<img src = "UNA1.gif" />
+	<img src = "UNA2.gif" />
+	<img src = "UNA3.jpg" />
+	<br>
+	<img src = "IR.jpg" />
+	<img src = "IR2.jpg" />
+	<img src = "IU.jpg" />
+</body>
+</html>

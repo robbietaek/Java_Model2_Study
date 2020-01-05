@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>구구단 출력하기</title>
+<style type="text/css">
+	table{
+		width : 100%;
+		border-collapse : collapse;
+	}
+	
+	th,td{
+		border : 3px solid #bcbcbc;
+		text-align : center;
+		padding : 8px;
+	}
+	
+	th{
+		background-color : #f2f2f2; color : #111111;
+	}
+	td{
+		background-color : #f2f2f2;
+	}
+	caption{
+		color : #111111;
+		font-size : 20px;
+		background-color : #ffffff
+	}
+</style>
+<script type="text/javascript">
+	function gugudan(){
+		var dantag =document.getElementById("dan")
+		var dan = parseInt(dantag.value);
+		var html = "<table><caption>"+dan+"단</caption>"
+		for(i=2;i<=9;i++){
+			html += "<tr><td>" + dan + "*" + i + "=" + (dan*i) + "</td></tr>"
+		}
+		html += "</table>"
+		console.log(html)
+		result.innerHTML =html;
+	}
+</script>
+</head>
+<body>
+<h3> 2단에서 9단까지의 숫자를 입력받아서 해당 단의 구구단을 출력하기</h3>
+<input type="text" id="dan" size="3"> 단
+<input type="button" value="구구단출력" onclick = "gugudan()">
+<br><br><br>
+<div id="result"></div>
+</body>
+</html>

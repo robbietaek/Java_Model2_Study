@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>후손 선택자, 자손선택자</title>
+<style type = "text/css">
+/*	#header h1 {color : red;}	/* #header의 하위 h1태그들*/  */
+/*	#header > h1 {color : red;}	/* #header의 자식 중  h1태그들 (바로 밑에)*/  */
+	#header, h1 {color : red;}	/* #header 태그 또는 h1 */
+</style>
+</head>
+<body>
+	<div id="header">
+		<h1 class="title">h1 class= title 태그</h1>
+		<div id="nav">
+			<h1>div id = "nav"하위 h1 태그</h1>
+		</div>
+	</div>
+<h1>body의 하위 h1 태그</h1>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>xml연습</title>
+<script type="text/javascript" src="ajax.js"></script>
+<script type="text/javascript">
+	function doXml() {
+		sendRequest("book.xml", null, parseXml, "GET");
+	}
+	function parseXml() {
+		if (ajax.readyState == 4) {
+			if (ajax.status == 200) {
+				listAllBooks();
+			} 
+		}
+	}
+	function listAllBooks() {
+		var xmlDoc = ajax.responseXML;
+		var books = xmlDoc.getElementsByTagName("book");
+		var sum = 0;
+		var htmldata = "<table border='1'><tr><th>제목</th><th>저자</th><th>가격</th></tr>";
+		for (var i = 0; i < books.length; i++) {
+			var title = books[i].getElementsByTagName("title")[0].childNodes[0].nodeValue;
+			var author = books[i].getElementsByTagName("author")[0].childNodes[0].nodeValue;
+			var price = books[i].getElementsByTagName("price")[0].childNodes[0].nodeValue;
+			htmldata += "<tr><td>" + title + "</td><td>" + author + "</td><td>" + price + "</td></tr>"
+			sum += parseInt(price);
+			}
+		htmldata += "<tr><td colspan = '3' align = 'center'>책 갯수 :" +books.length+"건, 총 가격 :"+sum+"원</td></tr></table>"
+		resultBody.innerHTML = "<h1>XML 책정보보기 </h1>"
+		resultBody.innerHTML += htmldata;
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="XML 검색하기" onclick="doXml()">
+	<div id="resultBody"></div>
+</body>
+</html>

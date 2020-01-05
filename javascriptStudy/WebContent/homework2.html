@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>시간구하기</title>
+<script type="text/javascript">
+	function calc() {
+		var sec = parseInt(document.f.number.value);
+		var hour = parseInt(sec / 3600)
+		var minute = parseInt((sec % 3600) / 60)
+		var sec = parseInt(sec % 60)
+
+		document.f.hour.value = hour;
+		document.f.minute.value = minute;
+		document.f.sec.value = sec;
+	}
+</script>
+</head>
+<body>
+	<form name="f">
+		<input type="text" name="number" style='text-align: right'> <input
+			type="button" value="시분초로 환산" onclick="calc()"><br> <input
+			type="text" name="hour" style='text-align: right'>시간<input
+			type="text" name="minute" style='text-align: right'>분<input
+			type="text" name="sec" style='text-align: right'>초
+	</form>
+</body>
+</html>

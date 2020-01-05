@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>20191112 문제1</title>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("h3:even").css({"background" : "black",	"color" : "yellow"})
+	$("h3:odd").css({"background" : "yellow", "color" : "blue"})
+	
+// 	$("h2:nth-child(3n)").css({"background" : "black", "color" : "white"})		//전체를 아우르기 때문에 원하는 색깔이 안나올 수도 있다.
+//	$("h2:nth-child(3n+1)").css({"background" : "yellow", "color" : "blue"})	//따라서 다른 방법으로
+
+ 	$("h2:nth-of-type(3n)").css({"background":"black","color":"white"})			//현재 h2만 비교해서 색깔을 입히는 것이기 때문에
+	$("h2:nth-of-type(3n+1)").css({"background":"yellow","color":"blue"})		//이렇게 써주면 정확하게 나온다.
+	
+	var colors = ["red","orange","yellow","green","blue","navy"]
+	//$("h1") : document.getElementsbyTagName("h1");
+/*	$("h1").each(function(i,item){
+		$(this).css({"background":"pink","color":colors[i]})
+	})	*/
+	
+	$.each(colors,function(i,color){
+		$("h1:eq("+i+")").css({"background":"pink","color":color})
+	})
+})
+</script>
+</head>
+<body>
+	h3태그 중 홀수번째를 노랑바탕에 파란글씨로, 짝수번째를 검정바탕에 노랑글씨로 변경
+	<h3>H3:Header_0</h3>
+	<h3>H3:Header_1</h3>
+	<h3>H3:Header_2</h3>
+	<h3>H3:Header_3</h3>
+	<h3>H3:Header_4</h3>
+	<h3>H3:Header_5</h3>
+	<hr>
+	h2 태그 중 3의 배수인 경우 검정 바탕에 흰글씨로, 3배수의 나머지가 1 경우 노랑 바탕에 파랑글씨로 설정하기
+	<h2>H2:Header_0</h2>
+	<h2>H2:Header_1</h2>
+	<h2>H2:Header_2</h2>
+	<h2>H2:Header_3</h2>
+	<h2>H2:Header_4</h2>
+	<h2>H2:Header_5</h2>
+	<hr>
+	h1 태그의 색상을 분홍 바탕에 첫번째는 빨강, 두번째 오렌지, 세번째 노랑, 네번째 초록, 다섯번째 파랑, 여섯번째 남색으로
+	설정하기
+	<h1>H1:Header_0</h1>
+	<h1>H1:Header_1</h1>
+	<h1>H1:Header_2</h1>
+	<h1>H1:Header_3</h1>
+	<h1>H1:Header_4</h1>
+	<h1>H1:Header_5</h1>
+</body>
+</html>

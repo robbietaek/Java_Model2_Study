@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>막대그래프</title>
+<script type="text/javascript"
+	src="http://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>
+<script type="text/javascript"
+	src="http://www.chartjs.org/samples/latest/utils.js"></script>
+<style>
+canvas {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+</style>
+</head>
+<body>
+	<div id="container" style="width: 75%;">
+		<canvas id="canvas"></canvas>
+	</div>
+
+	<script>
+		var MONTHS = [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월',
+				'10월', '11월', '12월' ];
+		var color = Chart.helpers.color;
+		var chartData = {
+			labels : MONTHS,
+			datasets : [
+					{
+						type : 'line',
+						label : '총무부 실적',
+						backgroundColor : color(window.chartColors.red).alpha(
+								0.5).rgbString(),
+						borderColor : window.chartColors.red,
+						borderWidth : 1,
+						fill : false,
+						data : [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
+					}, {
+						type : 'bar',
+						label : '영업부 실적',
+						backgroundColor : "#0000FF",
+						borderColor : "#0000FF",
+						borderWidth : 1,
+						fill : false,
+						data : [ 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 ]
+					}, {
+						type : 'line',
+						label : '금융부 실적',
+						backgroundColor : "#0000FF",
+						borderColor : "#0000FF",
+						borderWidth : 1,
+						fill : false,
+						data : [ 1, 2, 7, 8, 6, 2, 4, 5, 3, 5, 2, 1 ]
+					} ]
+
+		};
+
+		window.onload = function() {
+			var ctx = document.getElementById('canvas').getContext('2d');
+			//그래프를 그리기 위한 그림판지정
+			new Chart(ctx, {
+				data : chartData, //데이터
+				type : 'line',
+				options : {
+					responsive : true, //반응형웹
+					legend : {
+						position : 'top',
+						display : false
+					},
+					title : {
+						display : true,
+						text : '차트연습'
+					},
+					
+					scales:{
+						yAxes :[{
+							display : true,
+							scaleLable:{
+								display : true,
+								labelString : "부서별실적증가율"
+							}
+						}]
+					}
+				}
+			});
+		}
+	</script>
+</body>
+</html>

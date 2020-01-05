@@ -1,0 +1,32 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!--  !DOCTYPE : xml 문서 작성 규칙을 지정한 파일을 지정 내 문서는 configuration 부터 시작이야 
+	-// 이 부분에 -면 국제 공인이 아니고 + 면 국제 공인이다. 대부분 국제공인이 아니다.
+-->
+<!DOCTYPE configuration PUBLIC "-//mybatis.org/DTD config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- db connection 설정 -->
+	<properties resource="mapper/mybatis.properties" />
+	<typeAliases>
+	<typeAlias type="mapper.Member" alias = "Member"/>	<!-- 이제부터 mapper.Member를 Member로 -->
+	<typeAlias type="mybatisjava.Student" alias = "Student"/>
+	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${jdbc.driver}" />
+				<property name="url" value="${jdbc.url}" />
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<!-- 우리가 사용할 sql 구문을 설정한 xml을 설정 -->
+	<mappers>
+	<mapper resource = "mapper/MemberMapper1.xml"/>
+	<mapper resource = "mapper/StudentMapper1.xml"/>
+	<mapper resource = "mapper/StudentMapper2.xml"/>
+	<mapper resource = "mapper/StudentMapper3.xml"/>
+	</mappers>
+</configuration>
